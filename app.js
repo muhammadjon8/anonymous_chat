@@ -83,7 +83,8 @@ bot.start(async (ctx) => {
         if (language) {
           await ctx.reply(language.selected_language);
 
-          const user = await User.findOne({ userId });
+          let id = ctx.from.id
+          const user = await User.findOne({ userId: id });
           if (user) {
             await ctx.reply(
               `${language.greeting} \n${language.generate_command}\nt.me/anonim_xabaruzbot?start=${user.uniqueId}`,
